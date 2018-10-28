@@ -4,8 +4,9 @@ var router = express.Router();
 
 router.use('/', express.static(path.join(__dirname, 'public')))
 
-router.get('/', function(){
-    console.log('LOGIN HIT');
+router.post('/', function(req, res){
+    console.log(req.body);
+    res.sendFile(path.resolve(__dirname + '/../views/index.html'));
 }
 );
 module.exports = router;
