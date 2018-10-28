@@ -6,7 +6,7 @@ var path = require('path')
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({extended:true}));
-// app.use(bodyParser.json);
+app.engine('html', require('ejs').renderFile);
 
 var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/login');

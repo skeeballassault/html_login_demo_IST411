@@ -6,7 +6,7 @@ router.use('/', express.static(path.join(__dirname, 'public')));
 
 
 router.get('/', function(req, res) {
-    res.sendFile(path.resolve(__dirname + '/../views/index.html'));  }
+    res.render(path.resolve(__dirname + '/../views/index.html'),{danger:null});  }
 
 );
 
