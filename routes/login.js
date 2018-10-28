@@ -10,10 +10,8 @@ router.post('/', function(req, res){
     MOCK_DATA.forEach((user)=>{
         if(req.body.email === user.email ){
             match = true
-        } else {
-            match = false
         }
-        
+
     })
     console.log(req.body.email + " " + MOCK_DATA[0].email)
     console.log(match);
