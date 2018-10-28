@@ -4,6 +4,8 @@ var router = express.Router();
 
 router.use('/', express.static(path.join(__dirname, 'public')))
 
-router.get('/', ()=>console.log("HELLO"))
-
+router.get('/', function(){
+    console.log('LOGIN HIT');
+}
+);
 module.exports = router;

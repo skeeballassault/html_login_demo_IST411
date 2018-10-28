@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/skeeballassault/html_login_demo_IST411#readme",
   "devDependencies": {
+    "eslint": "^5.8.0",
     "nodemon": "^1.18.5"
   },
   "dependencies": {
