@@ -28,18 +28,15 @@
           <input type="checkbox" value="remember-me"> Remember me
         </label>
       </div>
-      <div id="alertbox" class="alert alert-danger">
-        <strong id="alertlabel">Login Unsuccessful</strong>
-      </div>
+      <% if (danger) { %>
+        <div id="alertbox" class="alert alert-danger">
+          <strong id="alertlabel"><%=danger %></strong>
+        </div>
+      <% } %>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       <p class="mt-5 mb-3 text-muted">Group 10</p>
     </form>
   </body>
 </html>
 
-<script>
-  if(danger){
-    document.getElementById('alertbox').style.display('inline');
-    document.getElementById('alertlabel').innerText(danger);
-  }
-</script>
+
