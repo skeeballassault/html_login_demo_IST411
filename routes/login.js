@@ -1,28 +1,20 @@
 var express = require('express');
 var path = require('path');
 var router = express.Router();
-var MOCK_DATA = require('../MOCK_DATA.json');
-var config = require('../config')
-var jwt = require('jsonwebtoken');
+var mongoose = require('mongoose');
+var acScheme = require('../schema/account');
+var Account = mongoose.model('Account', acScheme.schema);
 
-router.use('/', express.static(path.join(__dirname, 'public')))
+router.use('/', express.static(path.join(__dirname, 'public')));
 
-router.post('/', function(req, res){
-    var foundUser;
-    MOCK_DATA.forEach((user)=>{
-        if(req.body.email === user.email ){
-            foundUser = user;
-        }
-    })
+router.post('/', function (req, res) {
 
-    if(foundUser){
-        var token = jwt.sign({email: foundUser.email}, config.secret);
-        res.cookie('auth',token);
-        res.render(path.resolve(__dirname + '/../views/cover.html'),{user:foundUser.email});
-    } else {
-        res.render(path.resolve(__dirname + '/../views/index.html'),{danger:"Login Unsuccessful"});
-    }
-    
+  Account.findOne({email: req.body.email}, function (err, account) {
+    if (account)
+      res.render(path.resolve(__dirname + '/../views/cover.html'), {user: account.email});
+    else
+      res.render(path.resolve(__dirname + '/../views/index.html'), {danger: 'Login Unsuccessful'});
+  });
 }
 );
 module.exports = router;
