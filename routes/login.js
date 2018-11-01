@@ -9,12 +9,12 @@ router.use('/', express.static(path.join(__dirname, 'public')));
 
 router.post('/', function (req, res) {
 
-  Account.findOne({email: req.body.email}, function (err, account) {
-    if (account)
-      res.render(path.resolve(__dirname + '/../views/cover.html'), {user: account.email});
-    else
-      res.render(path.resolve(__dirname + '/../views/index.html'), {danger: 'Login Unsuccessful'});
-  });
+    Account.findOne({email: req.body.email}, function (err, account) {
+        if (account)
+            res.render(path.resolve(__dirname + '/../views/cover.html'), {user: account.email});
+        else
+            res.render(path.resolve(__dirname + '/../views/index.html'), {danger: 'Login Unsuccessful'});
+    });
 }
 );
 module.exports = router;
